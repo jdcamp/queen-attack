@@ -15,6 +15,10 @@
     return $app['twig']->render('queen.html.twig');
     });
 
+    $app->post("/move-input", function() use ($app) {
+        $newAttack = new Queen();
+        return $app['twig']->render('move-input.html.twig', array('output' => $newAttack->canQueenAttack($_POST['queen-x-pos'], $_POST['queen-y-pos'], $_POST['opponent-x-pos'], $_POST['opponent-y-pos'])));
+    });
 
-
+    return $app;
  ?>
